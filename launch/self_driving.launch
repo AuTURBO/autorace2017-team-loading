@@ -1,0 +1,27 @@
+<launch>
+
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+    <param name="framerate" value="30"/>
+  </node>
+
+  <node name="calibration_and_birdeyeview" pkg="self_driving_turtlebot3" type="calibration_and_birdeyeview.py" output="screen">
+  </node>
+
+  <node name="core" pkg="self_driving_turtlebot3" type="core.py">
+  </node>
+
+  <node name="lane_follower" pkg="self_driving_turtlebot3" type="lane_follower.py">
+  </node>
+
+  <node name="parking" pkg="self_driving_turtlebot3" type="parking.py">
+  </node>
+  <node name="maze3" pkg="self_driving_turtlebot3" type="maze3.py">
+  </node>
+
+</launch>
